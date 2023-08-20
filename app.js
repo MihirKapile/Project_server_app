@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import UserController from "./users/routes.js";
+import SessionController from "./session/routes.js";
+import RestaurantLikesRoutes from "./restaurantLikes/routes.js";
+import FollowsRoutes from "./follows/routes.js";
 import session from "express-session";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -37,5 +40,8 @@ if (process.env.NODE_ENV && process.env.NODE_ENV !== "development") {
 app.use(session(sessionOptions));
 app.use(express.json());
 
+RestaurantLikesRoutes(app);
+SessionController(app);
 UserController(app);
+FollowsRoutes(app);
 app.listen(process.env.PORT || 4000);

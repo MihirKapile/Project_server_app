@@ -40,9 +40,9 @@ function RestaurantLikesRoutes(app) {
     const likes = await likesDao.getLikesForRestaurant(restaurantId);
     res.json(likes);
   };
-  app.get("/api/restaurant/:restaurantId/likes", getLikesForRestaurant);
+  app.get("/api/restaurants/:restaurantId/likes", getLikesForRestaurant);
   app.get("/api/users/:userId/likes", getLikesForUser);
-  app.post("/api/restaurant/:restaurantId/likes", userLikesRestaurant);
+  app.post("/api/restaurants/:restaurantId/likes", userLikesRestaurant);
 }
 
 export default RestaurantLikesRoutes;

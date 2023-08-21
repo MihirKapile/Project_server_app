@@ -74,8 +74,10 @@ function UserController(app) {
   };
 
   const register = async (req, res) => {
-    const { username, password , role} = req.body;
-
+    const { username, password ,firstName,lastName, role} = req.body;
+    const avataroptions = ["https://wallpapers-clan.com/wp-content/uploads/2022/07/anime-default-pfp-6.jpg","https://i.pinimg.com/1200x/d0/9b/bd/d09bbd8e98ebaa93996fb4c059d294af.jpg","https://i.pinimg.com/736x/2c/73/6a/2c736aa4d61d22e3946e73cbc37d9e06.jpg"];
+    const randomAvatarIndex = Math.floor(Math.random() * avataroptions.length);
+    const avatar = avataroptions[randomAvatarIndex];
     // const existingUser = users.find((user) => user.username === username);
     const existingUser = await dao.findUserByUsername(username);
 
@@ -85,9 +87,12 @@ function UserController(app) {
     }
 
     const user = {
+      firstName,
+      lastName,
       username,
       password,
       role,
+      avatar,
     };
 
     const actualUser = await dao.createUser(user);

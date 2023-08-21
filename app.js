@@ -3,6 +3,7 @@ import cors from "cors";
 import UserController from "./users/routes.js";
 import SessionController from "./session/routes.js";
 import RestaurantLikesRoutes from "./restaurantLikes/routes.js";
+import RestaurantReviewsRoutes from "./restaurantReviews/routes.js";
 import FollowsRoutes from "./follows/routes.js";
 import session from "express-session";
 import mongoose from "mongoose";
@@ -81,6 +82,7 @@ app.use(session(sessionOptions));
 app.use(express.json());
 
 RestaurantLikesRoutes(app);
+RestaurantReviewsRoutes(app);
 SessionController(app);
 UserController(app);
 FollowsRoutes(app);

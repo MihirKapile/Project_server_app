@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema(
     },
     dateOfHire: { type: Date, default: Date.now() },
     avatar : String,
+    canSeeFollowers: Boolean,
+    canSeeReviews: Boolean,
+    canFollow: Boolean,
   },
   { collection: "users" }
 );
